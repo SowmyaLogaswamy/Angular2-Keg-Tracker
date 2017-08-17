@@ -257,7 +257,7 @@ gulp.task('build', ['ts'], function(){
   gulp.start('sassBuild');
 });
 ```
-* In `app/app.component.ts` add the following:
+* Touch `app/app.component.ts` and add the following:
 ```
 import { Component } from '@angular/core';
 
@@ -272,7 +272,7 @@ export class AppComponent {
 
 }
 ```
-* In `app/app.module.ts` add the following:
+* Touch `app/app.module.ts` and add the following:
 ```
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -286,7 +286,7 @@ import { AppComponent }   from './app.component';
 
 export class AppModule { }
 ```
-* In 'app/main.ts' add the following:
+* Touch 'app/main.ts' and add the following:
 
 ```
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -397,7 +397,7 @@ export class AppModule { }
     <li [class]="priceColor(currentKeg)" *ngFor="let currentKeg of childKegList">{{currentKeg.name}} <button (click)="editButtonHasBeenClicked(currentKeg)">Edit!</button></li>
   </ul>
 ```
-* In the keg list component add the hard-coded new kegs and the priceColor method:
+* In the keg list component add the hard-coded new kegs and the priceColor method. Be sure to add Keg objects now to populate list:
 ```
   kegs: Keg[] = [
     \\add new Keg objects according to the constructor
