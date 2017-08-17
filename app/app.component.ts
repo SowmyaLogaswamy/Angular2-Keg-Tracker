@@ -8,7 +8,7 @@ import { Keg } from './keg.model';
     <div class = "jumbotron">
       <h1>Keg Tracker</h1>
     </div>
-    <keg-list [childKegList]="kegs" (clickSender)="editKeg($event)"></keg-list>
+    <keg-list [childKegList]="kegs" (clickSenderEdit)="editKeg($event)" (clickSenderSell)="sellPint($event)"></keg-list>
     <hr>
     <edit-keg [childSelectedKeg]="selectedKeg" (doneButtonClickedSender)="finishedEditing()"></edit-keg>
     <hr>
@@ -32,6 +32,11 @@ export class AppComponent {
     this.selectedKeg = clickedKeg;
   }
 
+  sellPint(clickedKeg) {
+    clickedKeg.pints -= 1;
+    alert("You sold a pint. You currently have " + clickedKeg.pints + " left.");
+  }
+
   finishedEditing() {
     this.selectedKeg = null;
   }
@@ -39,5 +44,6 @@ export class AppComponent {
   addKeg(newKegFromChild: Keg) {
     this.kegs.push(newKegFromChild);
   }
+
 
 }
