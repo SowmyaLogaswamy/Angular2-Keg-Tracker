@@ -21,10 +21,10 @@ export class AppComponent {
   selectedKeg = null;
 
   kegs: Keg[] = [
-    new Keg("Rachel's Ginger Beer", "Rachel", 6, 6.5),
-    new Keg("King Julius Beer", "Roma", 4, 5.5),
-    new Keg("Heady Topper Beer", "Budweiser", 4, 7.5),
-    new Keg("Dinner Beer", "Samuel", 9, 6.5)
+    new Keg("Rachel's Ginger Beer", "Rachel", "IPA", 6, 6.5),
+    new Keg("King Julius Beer", "Roma", "IPA", 4, 5.5),
+    new Keg("Heady Topper Beer", "Budweiser", "Pale Ale", 4, 7.5),
+    new Keg("Dinner Beer", "Samuel", "Pale Ale", 9, 6.5)
   ];
 
   editKeg(clickedKeg) {
