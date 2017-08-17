@@ -11,7 +11,6 @@ import { Keg } from './keg.model';
     <keg-list [childKegList]="kegs" (clickSenderEdit)="editKeg($event)" (clickSenderSell)="sellPint($event)"></keg-list>
     <hr>
     <edit-keg [childSelectedKeg]="selectedKeg" (doneButtonClickedSender)="finishedEditing()"></edit-keg>
-    <hr>
     <new-keg (newKegSender)="addKeg($event)"></new-keg>
   </div>
   `

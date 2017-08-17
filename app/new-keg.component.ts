@@ -4,16 +4,42 @@ import { Keg } from './keg.model';
 @Component({
   selector: 'new-keg',
   template: `
-    <h1>New Keg</h1>
-    <label>Enter Keg Name:</label>
-    <input #newName>
-    <label>Enter Keg Brand:</label>
-    <input #newBrand>
-    <label>Enter Keg Price:</label>
-    <input #newPrice>
-    <label>Enter Keg Alcohol Content:</label>
-    <input #newAlcoholContent>
-    <button (click)= "submitForm(newName.value, newBrand.value, newPrice.value, newAlcoholContent.value); newName.value=''; newBrand.value=''; newPrice.value='';newAlcoholContent.value='';">Add</button>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h1>New Keg</h1>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="control-label col-sm-2">Enter Keg Name:</label>
+          <div class="col-sm-10">
+            <input class="form-control" #newName>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2">Enter Keg Brand:</label>
+          <div class="col-sm-10">
+            <input class="form-control" #newBrand>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2">Enter Keg Price:</label>
+          <div class="col-sm-4">
+            <input class="form-control" #newPrice>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2">Enter Keg Alcohol Content:</label>
+          <div class="col-sm-4">
+            <input class="form-control" #newAlcoholContent>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-danger"(click)= "submitForm(newName.value, newBrand.value, newPrice.value, newAlcoholContent.value); newName.value=''; newBrand.value=''; newPrice.value='';newAlcoholContent.value='';">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
   `
 })
 
