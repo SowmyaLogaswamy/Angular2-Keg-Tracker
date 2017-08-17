@@ -1,0 +1,17 @@
+{
+  "name": "angular2-keg-tracker",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/sagaquisces/angular2-keg-tracker",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

@@ -43,7 +43,7 @@ Keg Tracker Application
 ```
 <html>
   <head>
-    <title>Angular 2 To Do List for Epicodus</title>
+    <title>Angular 2 - Keg Tracker</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="build/js/vendor.min.js"></script>
@@ -71,7 +71,7 @@ Keg Tracker Application
 * Again at the top level, touch `package.json`, copy the following into it and save:
 ```
 {
-  "name": "angular2-to-do",
+  "name": "angular2-keg-tracker",
   "version": "1.0.0",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
@@ -117,7 +117,7 @@ Keg Tracker Application
   }
 }
 ```
-* Again, at the top level, initialize Bower at command line: `$ bower init`
+* Again, at the top level, initialize Bower at command line and accept all default prompts: `$ bower init`
 * Create a `.gitignore` at the top level with the following:
 ```
 node_modules/
@@ -257,6 +257,7 @@ gulp.task('build', ['ts'], function(){
   gulp.start('sassBuild');
 });
 ```
+* On the command line, `mkdir app`
 * Touch `app/app.component.ts` and add the following:
 ```
 import { Component } from '@angular/core';
@@ -275,18 +276,20 @@ export class AppComponent {
 * Touch `app/app.module.ts` and add the following:
 ```
 import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule }  from '@angular/platform-browser';
 import { AppComponent }   from './app.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
-  imports: [BrowserModule],
+  imports: [ BrowserModule,
+                  FormsModule ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
 
 export class AppModule { }
 ```
-* Touch 'app/main.ts' and add the following:
+* Touch `app/main.ts` and add the following:
 
 ```
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -296,7 +299,7 @@ const platform = platformBrowserDynamic();
 
 platform.bootstrapModule(AppModule);
 ```
-* Back at the top level, we'll need a `system.config.js`
+* Back at the top level, we'll need a `systemjs.config.js`
 
 ```
 /**
@@ -371,7 +374,7 @@ export class KegListComponent {
 
 }
 ```
-* Create `app/app.module.ts` to import our outside dependencies as well as declare our parent app component and keg-list component:
+* Edit `app/app.module.ts` to import and declare keg-list component:
 ```
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -397,12 +400,9 @@ export class AppModule { }
     <li [class]="priceColor(currentKeg)" *ngFor="let currentKeg of childKegList">{{currentKeg.name}} <button (click)="editButtonHasBeenClicked(currentKeg)">Edit!</button></li>
   </ul>
 ```
-* In the keg list component add the hard-coded new kegs and the priceColor method. Be sure to add Keg objects now to populate list:
-```
-  kegs: Keg[] = [
-    \\add new Keg objects according to the constructor
-  ];
 
+*  In the keg-list component (child component) add the priceColor  and editButtonHasBeenClicked methods.
+```
   priceColor(currentKeg){
     if (currentKeg.price >= 5){
       return "bg-danger";
@@ -416,7 +416,13 @@ export class AppModule { }
     }
   }
 
+```
 
+* In the app component(parent component) add the hard-coded new kegs. Be sure to add Keg objects now to populate list:
+```
+  kegs: Keg[] = [
+    \\add new Keg objects according to the constructor
+  ];
 ```
 * In the app component file add the `keg-list` selector under the "Keg Tracker" header in the template:
 ```
@@ -429,7 +435,7 @@ import { Component } from '@angular/core';
 import { Keg } from './keg.model';
 
 ```
-* In the keg-list component file, import `Input` as well from core (top line of file after "Component" and a comma), then add the following at the top of the `KegListComponent` class:
+* In the keg-list component file, import `Input` as well from core (top line of file after "Component" and a comma), then add the following at the top inside of the `KegListComponent` class:
 ```
 @Input() childKegList: Keg[];
 ```
@@ -450,7 +456,7 @@ import { Keg } from './keg.model';
 (clickSender)="editKeg($event)"
 ```
 
-* In the app component file, also add `selectedKeg = null;` as a variable at the topf of the `AppComponent` class and add the following method below the kegs list:
+* In the app component file, also add `selectedKeg = null;` as a variable at the top inside of the `AppComponent` class and add the following method below the kegs list:
 ```
   editKeg(clickedKeg) {
     this.selectedKeg = clickedKeg;
